@@ -1,0 +1,21 @@
+{
+  "name": "gists-blog",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "github-markdown-css": "^2.9.0",
+    "react": "^16.1.1",
+    "react-bootstrap": "0.31.5",
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "0.9.x",
+    "showdown": "^1.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
