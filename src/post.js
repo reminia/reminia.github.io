@@ -4,7 +4,6 @@ import PostContent from './post-content.js'
 
 import { Link } from 'react-router-dom'
 
-
 class Post extends Component {
     render() {
         const post = this.props.post
