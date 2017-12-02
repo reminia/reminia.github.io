@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { gistUri } from './api.js';
+import React, { Component } from 'react'
+import { gistUri } from './api.js'
 import marked from 'marked'
 import 'github-markdown-css'
 import hljs from 'highlight.js'
