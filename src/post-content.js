@@ -31,7 +31,7 @@ class PostContent extends Component {
 
     render() {
         return (
-            <div>
+            <div class="content">
                 <div class="content-title"> {this.title} </div>
                 {this.state.content}
             </div>
