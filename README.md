@@ -1,9 +1,13 @@
-A github gists static blog written with react and react-router.
+A github gists blog written with react and react-router.
 
-For the purpose of practice with reactjs.
+Posts are hosted by github gists.
 
 ### start
 
 `yarn start`
+
+### build
+
+`yarn build`
 
 

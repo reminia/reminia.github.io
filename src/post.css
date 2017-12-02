@@ -1,12 +1,12 @@
 .post {
-    font-size : 20px;
+    font-size: 20px;
     margin-bottom: 4px;
     background: #FAFBFC;
     margin: 6px 15px;
     height: 60px;
 }
 
-.title{
+.title {
     color: rgb(91, 97, 99);
     padding: 15px 15px;
     font-weight: bold;
@@ -34,7 +34,7 @@
 .content-title {
     font-size: 20px;
     font-style: bold;
-    color:#9087FE;
+    color: #9087FE;
     margin-left: 15px;
     text-align: center;
 }

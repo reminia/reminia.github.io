@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Post from './post.js';
-import  {schema, userGists} from './api.js';
+import { schema, userGists } from './api.js';
 
 class Posts extends Component {
 
