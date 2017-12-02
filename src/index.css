@@ -8,6 +8,7 @@ body {
 #root {
     margin: auto 15%;
     background: #D2D8E4;
+    padding-bottom: 15px;
 }
 
 .page-header {
@@ -25,5 +26,4 @@ body {
 
 .content {
   margin: 15px 15px;
-  /* background: #FAFBFC; */
 }

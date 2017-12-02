@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { gistUri } from './api.js';
-import showdown from 'showdown'
+import marked from 'marked'
 import 'github-markdown-css'
+import hljs from 'highlight.js'
 
 class PostContent extends Component {
 
-    
     match = this.props.match.params
     state = { content: "" }
     title = this.props.location.state.title
+
     componentDidMount() {
-        console.log(this.props)
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            highlight: function (code) {
+                return hljs.highlightAuto(code).value;
+            }
+        });
         fetch(gistUri + this.match.id, {
             headers: {
                 'Content-Type': 'application/json',
@@ -20,12 +26,11 @@ class PostContent extends Component {
             .then(gist => {
                 const files = gist.files
                 for (let file in files) {
-                    let converter = new showdown.Converter()
-                    let htmlContent = converter.makeHtml(files[file].content)
+                    let htmlContent = marked(files[file].content)
                     const div = <div class="markdown-body" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
                     this.setState({ content: div })
+                    return;
                 }
-
             })
     }
 
