@@ -7,12 +7,11 @@
 
 .title {
     color: rgb(91, 97, 99);
-    padding: 0.6rem 1.5rem;
+    padding: 1rem 1.5rem;
     font-weight: bold;
 }
 
 .date {
-    margin: 0.65rem auto;
     font-size: 1.5rem;
     float: right;
 }
