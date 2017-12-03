@@ -21,7 +21,7 @@ Posts are hosted by github gists.
 
 ### todo
 
-    1. css mobile adapt
+    1. ~~css mobile adapt~~
     2. comment support
     3. maybe pagination
     4. link to weixin posts
