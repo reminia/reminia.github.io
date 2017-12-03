@@ -28,7 +28,10 @@ class Posts extends Component {
     }
 
     parseDate(aDate) {
-        let date = new Date(aDate).toLocaleString("en-US", { hour12: false })
+        let date = new Date(aDate).toLocaleString("zh-CN", {
+            hour12: false,
+            timeZone: "Asia/Shanghai"
+        })
         return date.split(',').join("")
     }
 
