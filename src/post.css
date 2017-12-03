@@ -2,12 +2,11 @@
     font-size: 2rem;
     background: #FAFBFC;
     margin: 0.6rem auto;
-    height: 4rem;
 }
 
 .title {
     color: rgb(91, 97, 99);
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     font-weight: bold;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .post-content {
-  background: #FAFBFC;
-  padding-bottom: 1.5rem;
+    background: #FAFBFC;
+    padding-bottom: 1.5rem;
 }
 
 .content-title {
