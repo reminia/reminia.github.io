@@ -28,8 +28,8 @@ class Posts extends Component {
     }
 
     parseDate(aDate) {
-        const arr = aDate.split("T")
-        return arr[0] + " " + arr[1].slice(0, -1)
+        let date = new Date(aDate).toLocaleString("en-US", { hour12: false })
+        return date.split(',').join("")
     }
 
     // parse desc to label and title
@@ -40,7 +40,7 @@ class Posts extends Component {
         const title = arr.filter(a => !a.startsWith("#"))
 
         return {
-            labels: labels.length > 0 ? labels : [], 
+            labels: labels.length > 0 ? labels : [],
             title: title.join(" ")
         }
     }
