@@ -14,11 +14,11 @@ class Posts extends Component {
             .then(resp => { return resp.json() })
             .then(data => {
                 const posts = data.map(item => {
-                    const { label, title } = this.parseDescription(item.description)
+                    const { labels, title } = this.parseDescription(item.description)
                     return {
                         id: item.id,
                         title: title,
-                        label: label,
+                        labels: labels,
                         url: item.html_url,
                         date: this.parseDate(item.updated_at)
                     }
@@ -40,7 +40,7 @@ class Posts extends Component {
         const title = arr.filter(a => !a.startsWith("#"))
 
         return {
-            label: labels.length > 0 ? labels[0] : "",
+            labels: labels.length > 0 ? labels : [], 
             title: title.join(" ")
         }
     }
