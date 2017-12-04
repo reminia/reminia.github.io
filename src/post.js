@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 class Post extends Component {
     render() {
         const post = this.props.post
-        let labels = post.labels.map(label => ( <span class="badge badge-label">{label}</span> ))
+        let labels = post.labels.map(label => (<span class="badge badge-label">{label}</span>))
         let path = "/posts/" + post.id
         return (
             <div class="post">
                 <div class="title">
                     <Link to={{
                         pathname: path,
-                        state: { title: post.title }
+                        state: { title: post.title, url: post.url }
                     }}>{post.title}</Link>
                     {labels}
                     <span class="date float-xs-right">

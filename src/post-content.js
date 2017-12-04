@@ -9,6 +9,7 @@ class PostContent extends Component {
     match = this.props.match.params
     state = { content: "" }
     title = this.props.location.state.title
+    url = this.props.location.state.url
 
     componentDidMount() {
         marked.setOptions({
@@ -37,7 +38,12 @@ class PostContent extends Component {
     render() {
         return (
             <div class="content post-content">
-                <div class="content-title"> {this.title} </div>
+                <div class="content-title">
+                    {this.title + " "}
+                    <a href={this.url}>
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </a>
+                </div>
                 {this.state.content}
             </div>
         )
