@@ -20,7 +20,7 @@ class Posts extends Component {
                         title: title,
                         labels: labels,
                         url: item.html_url,
-                        date: this.parseDate(item.updated_at)
+                        date: this.parseDate(item.created_at)
                     }
                 })
                 this.setState({ posts: posts })
