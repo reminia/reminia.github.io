@@ -13,15 +13,17 @@ html {
         font-size: 8px
     }
     #root {
-        margin: auto 5%;
+        margin: auto 3%;
     }
     .date {
         float: none;
         display: block;
     }
-
     .badge-label {
         float: right;
+    }
+    .markdown-body p {
+        font-size: 2rem;
     }
 }
 
@@ -30,7 +32,7 @@ html {
         font-size: 6px
     }
     #root {
-        margin: auto 5%;
+        margin: auto 3%;
     }
 }
 
@@ -57,5 +59,5 @@ body {
 }
 
 .content {
-    margin: 15px 15px;
+    margin: 1.5rem 1.5rem;
 }
