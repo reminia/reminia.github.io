@@ -10,7 +10,7 @@ Posts are hosted by github gists.
 
 `yarn build`
 
-### libraries used
+### dependencies
 
     * react
     * react-dom
