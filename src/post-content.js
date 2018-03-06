@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { gistUri } from './api.js'
+import { gistUri, gaRecord} from './api.js'
 import marked from 'marked'
 import 'github-markdown-css'
 import hljs from 'highlight.js'
@@ -12,6 +12,7 @@ class PostContent extends Component {
     url = this.props.location.state.url
 
     componentDidMount() {
+        gaRecord()
         marked.setOptions({
             renderer: new marked.Renderer(),
             highlight: function (code) {

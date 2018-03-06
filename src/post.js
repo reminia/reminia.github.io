@@ -5,13 +5,6 @@ import PostContent from './post-content.js'
 import { Link } from 'react-router-dom'
 
 class Post extends Component {
-    gaRecord() {
-        window.gtag(
-            'config',
-            'UA-110850300-1',
-            { 'page_path': window.location.pathname}
-        )
-    }
 
     render() {
         const post = this.props.post
@@ -23,8 +16,8 @@ class Post extends Component {
                     <Link to={{
                         pathname: path,
                         state: { title: post.title, url: post.url }
-                    }} onClick={this.gaRecord}>{post.title}</Link> {labels}
-                                       <span class="date float-xs-right">
+                    }} >{post.title}</Link> {labels}
+                    <span class="date float-xs-right">
                         <i class="fa fa-calendar" aria-hidden="true"></i> {post.date}
                     </span>
                 </div>
