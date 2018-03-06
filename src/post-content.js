@@ -12,7 +12,7 @@ class PostContent extends Component {
     url = this.props.location.state.url
 
     componentDidMount() {
-        gaRecord()
+        gaRecord(this.title)
         marked.setOptions({
             renderer: new marked.Renderer(),
             highlight: function (code) {
