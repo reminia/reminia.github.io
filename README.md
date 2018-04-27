@@ -19,10 +19,15 @@ Posts are hosted by github gists.
 * github-markdown-css -> markdown css
 * highlight.js -> code block highlight
 
+### configuration
+
+Configuration is  under the config key of package.json. You can customize it. 
+* user: github user name
+* ga: google analysis GA ID
+
 ### usage
-1. change  userGists api in the api.js to yours
-2. yarn build
-3. push the build directory to the master branch of yourname.github.io repo 
+1. yarn build
+2. push the build directory to the master branch of yourname.github.io repo 
 
 ### todo
 1. ~~css mobile adapt~~
