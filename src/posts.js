@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Post from './post.js';
-import { schema, userGists } from './api.js';
+import { schema, userGists, issuesUri } from './api.js';
 
 class Posts extends Component {
 
@@ -10,13 +10,15 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        fetch(userGists)
+        fetch(issuesUri)
             .then(resp => { return resp.json() })
             .then(data => {
-                const posts = data.map(item => {
-                    const { labels, title } = this.parseDescription(item.description)
+                const posts = data
+                    .filter(item => item.state === 'open')
+                    .map(item => {
+                        const { labels, title } = this.parseDescription(item.title)
                     return {
-                        id: item.id,
+                        id: item.number,
                         title: title,
                         labels: labels,
                         url: item.html_url,

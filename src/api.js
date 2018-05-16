@@ -1,7 +1,7 @@
 const pkg = require("../package.json")
 export const schema = "https://api.github.com"
-export const userGists = schema + "/users/" + pkg.config.user + "/gists"
-export const gistUri = "https://api.github.com/gists/"
+export const issueUri = "https://api.github.com/repos/reminia/reminia.github.io/issues/"
+export const issuesUri = "https://api.github.com/repos/reminia/reminia.github.io/issues"
 const GA_TRACKING_ID = pkg.config.ga
 export function gaRecord(title) { // update GA for post view
     window.gtag(
