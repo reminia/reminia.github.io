@@ -1,6 +1,6 @@
-A github gists blog written with react and react-router.
+A github issue blog written with react and react-router.
 
-Posts are hosted by github gists.
+Posts are hosted in github issues.
 
 ### start
 
