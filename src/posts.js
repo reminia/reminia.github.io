@@ -25,7 +25,7 @@ class Posts extends Component {
     }
 
     fetchData() {
-        if(!this.id) this.id = 1
+        if (!this.id) this.id = 1
         fetch(issuesUri(this.id))
             .then(resp => {
                 const link = resp.headers.get('link')
@@ -89,12 +89,12 @@ class Posts extends Component {
         const posts = this.state.posts.map(post => <Post post={post} />)
         let prev, next
         if (this.prev) {
-            prev = <i class="fa fa-arrow-left prev" aria-hidden="true"><Link to={'/page/' + (this.id - 1)}>prev</Link></i>
+            prev = <i class="fa fa-long-arrow-left prev" aria-hidden="true"><Link to={'/page/' + (this.id - 1)}>prev</Link></i>
         }
         if (this.next) {
-            next = <i class="fa fa-arrow-right next" aria-hidden="true"><Link to={'/page/' + (this.id + 1)}>next</Link></i>
+            next = <Link to={'/page/' + (this.id + 1)} className="next">next<i class="fa fa-long-arrow-right black" aria-hidden="true" /></Link>
         }
-        const navigate = <div class="posts-navigate"> {prev} {next} </div>
+        const navigate = <div className="posts-navigate"> {prev} {next} </div>
         posts.push(navigate)
         return (
             <div class="content">{posts}</div>
