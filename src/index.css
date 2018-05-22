@@ -71,3 +71,15 @@ body {
 .content {
     margin: 1.5rem 1.5rem;
 }
+
+.prev {
+    margin-left: 1.5rem;
+    float: left;
+    font-size: 2.5rem;
+}
+
+.next {
+    float: right;
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+}

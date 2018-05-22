@@ -6,26 +6,28 @@ import hljs from 'highlight.js'
 
 class PostContent extends Component {
 
-    match = this.props.match.params
     state = { content: "" }
-    title = this.props.location.state.title
-    url = this.props.location.state.url
+    title = ""
 
     componentDidMount() {
-        gaRecord(this.title)
+        const path = window.location.pathname
+        const id = path.split('/').pop()
         marked.setOptions({
             renderer: new marked.Renderer(),
             highlight: function (code) {
                 return hljs.highlightAuto(code).value;
             }
         });
-        fetch(issueUri + this.match.id, {
+        fetch(issueUri + id, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         }).then(resp => { return resp.json() })
             .then(issue => {
+                this.title = issue.title
+                this.url = issue.html_url
+                gaRecord(this.title)
                 let htmlContent = marked(issue.body)
                 const div = <div class="markdown-body" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
                 this.setState({ content: div })

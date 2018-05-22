@@ -5,24 +5,24 @@ import PostContent from './post-content.js';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  withRouter
 } from 'react-router-dom'
 
-class App extends Component {
+export class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <div>
-            <div class="posts-header"><Link to="/">Posts</Link></div>
-            <Route exact path="/" component={Posts} />
-            <Route path="/posts/:id" component={PostContent} />
-          </div>
-        </Router>
-      </div>
+      <Router>
+        <div>
+          <div className="posts-header"><Link to="/page/1">Posts</Link></div>
+          <Route path="/page/:id" component={Posts} />
+          <Route path="/posts/:id" component={PostContent} />
+          <Route exact path="/" component={Posts}  />
+        </div>
+      </Router>
     )
   }
 }
 
-export default App;
+export default withRouter((App));

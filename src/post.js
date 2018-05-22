@@ -13,10 +13,7 @@ class Post extends Component {
         return (
             <div class="post">
                 <div class="title">
-                    <Link to={{
-                        pathname: path,
-                        state: { title: post.title, url: post.url }
-                    }} >{post.title}</Link> {labels}
+                    <Link to={{ pathname: path }} >{post.title}</Link> {labels}
                     <span class="date float-xs-right">
                         <i class="fa fa-calendar" aria-hidden="true"></i> {post.date}
                     </span>

@@ -1,32 +1,67 @@
 import React, { Component } from 'react';
 import Post from './post.js';
-import { schema, userGists, issuesUri } from './api.js';
+import { schema, issuesUri } from './api.js';
+import { Link } from 'react-router-dom'
 
 class Posts extends Component {
 
+    prev
+    next
     constructor(props) {
         super(props)
-        this.state = { posts: [] }
+        this.state = { posts: [], routeChanged: false }
     }
 
-    componentDidMount() {
-        fetch(issuesUri)
-            .then(resp => { return resp.json() })
+    componentWillReceiveProps(nextProps) {
+        const routeChanged = nextProps.location !== this.props.location
+        if (routeChanged) {
+            this.id = this.resolveId(nextProps.location)
+            this.fetchData(this.id)
+        }
+    }
+
+    resolveId(location) {
+        return parseInt(location.pathname.split('/').pop())
+    }
+
+    fetchData(id) {
+        if(!id) id = 1
+        fetch(issuesUri(id))
+            .then(resp => {
+                const link = resp.headers.get('link')
+                link.trim().split(',').forEach(item => {
+                    const splits = item.split(";")
+                    const url = splits[0].slice(1, -1)
+                    const ref = splits[1]
+                    if (ref.includes("prev")) {
+                        this.prev = url
+                    }
+                    if (ref.includes("next")) {
+                        this.next = url
+                    }
+                })
+                return resp.json()
+            })
             .then(data => {
                 const posts = data
                     .filter(item => item.state === 'open')
                     .map(item => {
                         const { labels, title } = this.parseDescription(item.title)
-                    return {
-                        id: item.number,
-                        title: title,
-                        labels: labels,
-                        url: item.html_url,
-                        date: this.parseDate(item.created_at)
-                    }
-                })
+                        return {
+                            id: item.number,
+                            title: title,
+                            labels: labels,
+                            url: item.html_url,
+                            date: this.parseDate(item.created_at)
+                        }
+                    })
                 this.setState({ posts: posts })
             })
+    }
+
+    componentDidMount() {
+        this.id = this.resolveId(this.props.location)
+        this.fetchData(this.id)
     }
 
     parseDate(aDate) {
@@ -50,9 +85,17 @@ class Posts extends Component {
         }
     }
 
-
     render() {
         const posts = this.state.posts.map(post => <Post post={post} />)
+        let prev, next
+        if (this.prev) {
+            prev = <i class="fa fa-arrow-left prev" aria-hidden="true"><Link to={'/page/' + (this.id - 1)}>prev</Link></i>
+        }
+        if (this.next) {
+            next = <i class="fa fa-arrow-right next" aria-hidden="true"><Link to={'/page/' + (this.id + 1)}>next</Link></i>
+        }
+        const navigate = <div class="posts-navigate"> {prev} {next} </div>
+        posts.push(navigate)
         return (
             <div class="content">{posts}</div>
         )
