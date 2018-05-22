@@ -16,7 +16,7 @@ class Posts extends Component {
         const routeChanged = nextProps.location !== this.props.location
         if (routeChanged) {
             this.id = this.resolveId(nextProps.location)
-            this.fetchData(this.id)
+            this.fetchData()
         }
     }
 
@@ -24,9 +24,9 @@ class Posts extends Component {
         return parseInt(location.pathname.split('/').pop())
     }
 
-    fetchData(id) {
-        if(!id) id = 1
-        fetch(issuesUri(id))
+    fetchData() {
+        if(!this.id) this.id = 1
+        fetch(issuesUri(this.id))
             .then(resp => {
                 const link = resp.headers.get('link')
                 link.trim().split(',').forEach(item => {
@@ -61,7 +61,7 @@ class Posts extends Component {
 
     componentDidMount() {
         this.id = this.resolveId(this.props.location)
-        this.fetchData(this.id)
+        this.fetchData()
     }
 
     parseDate(aDate) {
