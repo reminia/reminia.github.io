@@ -31,6 +31,7 @@ class Posts extends Component {
                 const link = resp.headers.get('link')
                 this.prev = undefined 
                 this.next = undefined
+
                 link.trim().split(',').forEach(item => {
                     const splits = item.split(";")
                     const url = splits[0].slice(1, -1)
