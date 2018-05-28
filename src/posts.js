@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Post from './post.js';
-import { schema, issuesUri } from './api.js';
+import { schema, issuesUri, parseTitle, parseDate } from './util.js';
 import { Link } from 'react-router-dom'
 
 class Posts extends Component {
@@ -29,7 +29,7 @@ class Posts extends Component {
         fetch(issuesUri(this.id))
             .then(resp => {
                 const link = resp.headers.get('link')
-                this.prev = undefined 
+                this.prev = undefined
                 this.next = undefined
 
                 link.trim().split(',').forEach(item => {
@@ -49,13 +49,13 @@ class Posts extends Component {
                 const posts = data
                     .filter(item => item.state === 'open')
                     .map(item => {
-                        const { labels, title } = this.parseDescription(item.title)
+                        const { labels, title } = parseTitle(item.title)
                         return {
                             id: item.number,
                             title: title,
                             labels: labels,
                             url: item.html_url,
-                            date: this.parseDate(item.created_at)
+                            date: parseDate(item.created_at)
                         }
                     })
                 this.setState({ posts: posts })
@@ -65,27 +65,6 @@ class Posts extends Component {
     componentDidMount() {
         this.id = this.resolveId(this.props.location)
         this.fetchData()
-    }
-
-    parseDate(aDate) {
-        let date = new Date(aDate).toLocaleString("zh-CN", {
-            hour12: false,
-            timeZone: "Asia/Shanghai"
-        })
-        return date.split(',').join("")
-    }
-
-    // parse desc to label and title
-    // word starts with # is label
-    parseDescription(desc) {
-        const arr = desc.trim().split(/\s+/)
-        const labels = arr.filter(a => a.startsWith("#"))
-        const title = arr.filter(a => !a.startsWith("#"))
-
-        return {
-            labels: labels.length > 0 ? labels : [],
-            title: title.join(" ")
-        }
     }
 
     render() {

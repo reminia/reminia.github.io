@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { issueUri, gaRecord } from './api.js'
+import { issueUri, gaRecord, parseTitle } from './util.js'
 import marked from 'marked'
 import 'github-markdown-css'
 import hljs from 'highlight.js'
@@ -25,7 +25,7 @@ class PostContent extends Component {
             }
         }).then(resp => { return resp.json() })
             .then(issue => {
-                this.title = issue.title
+                this.title = parseTitle(issue.title).title
                 this.url = issue.html_url
                 gaRecord(this.title)
                 let htmlContent = marked(issue.body)
