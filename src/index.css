@@ -2,10 +2,13 @@ html {
     font-size: 9px;
 }
 
-#root {
-    margin: auto 15%;
-    /* background: #D2D8E4; */
+#footer, #root {
+    margin: auto 15%; /* background: #D2D8E4; */
     padding-bottom: 1.5rem;
+}
+
+#footer {
+    text-align: center;
 }
 
 @media only screen and (max-width: 900px) {
@@ -47,7 +50,7 @@ body {
     color: black;
     font-size: 2.6rem;
     font-weight: bold;
-    margin: 2% 20%;
+    margin: 1% auto;
     text-align: center;
 }
 
@@ -83,6 +86,12 @@ body {
     font-size: 2.5rem;
     margin-right: 1.5rem;
 }
+
 .black {
     color: black;
+}
+
+.about {
+    color: grey;
+    font-size: 2em;
 }
